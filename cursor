@@ -1,0 +1,20 @@
+SET serveroutput on;
+declare algo varchar2(120);
+begin
+dbms_output.put_line('Probaremos un cursor implícito');
+
+--cursor implicito
+SELECT sueldo_base INTO ALGO FROM USUARIO1 WHERE ID_USUARIO1=3;
+dbms_output.put_line('EN LA MEMORIA GLOBAL ESTÁ'|| algo);
+end;
+/
+
+--la miSMA con el cursor explicito para tener muchas filas en memoria.
+declare
+cursor cur_usuario1 is select * from usuario1;
+begin
+for rec_usuario in cur_usuario1 loop 
+dbms_output.put_line('en este momoento esta nen la meomriap:' || rec_usuario.nombre);
+end loop;
+end;
+/
