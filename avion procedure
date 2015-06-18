@@ -1,0 +1,20 @@
+create or replace 
+procedure guardar_avion 
+(
+my_id_avion out integer, my_id_aerolinea in integer, my_asiento in integer)
+as
+begin
+select sec_id_avion.nextval into my_id_avion from dual;
+insert into avion values (my_id_avion, my_id_aerolinea, my_asiento);
+end;
+
+
+
+
+declare id_avion integer;
+declare id_avion integer;
+begin
+guardar_avion(id_avion, id_aero, '666a');
+select * from avion;
+end;
+/
