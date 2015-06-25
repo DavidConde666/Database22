@@ -1,0 +1,12 @@
+create or replace procedure guardar_avion(
+my_id_avion out integer, my_id_aerolinea in integer,
+my_asientos in integer)
+as
+begin
+if my_asientos>200 then
+raise_application_error(-20001, 'ningun avion puede llevar mas de 200 pasajeros');
+end if;
+select SEC_AVION.nextval into my_id_avion from dual;
+insert into AVION values(my_id_avion, my_id_aerolinea, my_asientos);
+end;
+/
