@@ -1,0 +1,20 @@
+-- After Triggers
+-- se desea realizar un bacup en un sitema de BD en ORCL 
+--se requiere   que al guardar un usuario se generen 2 registros en las tablas siguientes.
+
+create table usuario_xxx(nombre varchar2(120), edad integer);
+create table xxx_menores(nombre varchar2(120), edad integer);
+create table xxx_mayores(nombre varchar2, edad integer);
+
+create or replace trigger respaldo_xxx after insert on usuario_xxx for each row
+begin
+if: new.edad<18 then 
+intert into xxx_menores values (:new.nombre, :new edad);
+else 
+inserte into xxx_mayores values(:new.nombre, new.edad
+);
+else
+insert into xxx_mayores values (:new.nombre, :new.edad);
+end if;
+end
+/
